@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class FirstServlet
  */
-@WebServlet({ "/FirstServlet", "/hello", "/homepage" })
-public class FirstServlet extends HttpServlet {
+@WebServlet({"/hello", "/homepage" })
+public class Homepage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FirstServlet() {
+    public Homepage() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,19 +28,20 @@ public class FirstServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Hello world!").append(request.getRemoteAddr());
+		
 		String param = request.getParameter("action");
 		switch (param){
 		case "index":
-			response.sendRedirect("http://localhost:8081/HelloWorld/index.jsp");
+			response.sendRedirect("index.jsp");
 			break;
 		case "gallery":
-			response.sendRedirect("http://localhost:8081/HelloWorld/gallery.jsp");
+			response.sendRedirect("gallery.jsp");
 			break;
 		case "about":
-			response.sendRedirect("http://localhost:8081/HelloWorld/about.jsp");
+			response.sendRedirect("about.jsp");
 			break;
 		case "contact":
-			response.sendRedirect("http://localhost:8081/HelloWorld/contact.jsp");
+			response.sendRedirect("contact.jsp");
 			break;
 		default:
 			break;
