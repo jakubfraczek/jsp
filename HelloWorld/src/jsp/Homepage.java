@@ -1,4 +1,4 @@
-package src.jsp;
+package jsp;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -35,7 +35,7 @@ public class Homepage extends HttpServlet {
 			response.sendRedirect("gallery");
 			break;
 		case "about":
-			response.sendRedirect("about.jsp");
+			response.sendRedirect("about");
 			break;
 		case "contact":
 			response.sendRedirect("contact.jsp");

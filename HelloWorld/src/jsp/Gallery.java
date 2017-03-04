@@ -1,6 +1,5 @@
-package src.jsp;
+package jsp;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import src.model.Image;
+import model.Image;
 
 /**
  * Servlet implementation class Gallery
@@ -33,16 +32,18 @@ public class Gallery extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		src.model.Gallery gallery = new src.model.Gallery("Murreys");
+		model.Gallery gallery = new model.Gallery("Murreys");
 		fillGallery(gallery);
 		request.setAttribute("gallery", gallery);
 		request.getRequestDispatcher("gallery.jsp").forward(request, response);
+		if(request.getParameter("action") != null && request.getParameter("action").equals("index")){
+			response.sendRedirect("index.jsp");
+		}
 	}
 
-	private void fillGallery(src.model.Gallery gallery) {
+	private void fillGallery(model.Gallery gallery) {
 		int i = 0;
-		File source = Paths.get(System.getProperty("user.home"), "Desktop", "images.txt").toFile();
-		try (Scanner sc = new Scanner(source)) {
+		try (Scanner sc = new Scanner(Paths.get(System.getProperty("user.home"), "Desktop", "images.txt").toFile())) {
 			while (sc.hasNextLine()) {
 				Image image = new Image(sc.nextLine(), ("Murrey no. " + ++i));
 				gallery.addImage(image);

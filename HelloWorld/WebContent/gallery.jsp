@@ -1,7 +1,7 @@
 <%@page import="java.util.List"%>
-<%@page import="src.model.Gallery"%>
+<%@page import="model.Gallery"%>
 <%@page import="java.awt.print.Printable"%>
-<%@ page import="src.model.Image"%>
+<%@ page import="model.Image"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -15,10 +15,12 @@
 <title>Gallery</title>
 </head>
 <body>
+<a href="homepage?action=index">home</a>
 	<h1><% 
 	out.print(gallery.getName() + " gallery");
 	%></h1>
-	<table>
+	<h3><% out.print("Created " + gallery.getCreatedDeate().toString()); %></h3>
+	<table border=1>
 	<% for(int i = 0; i < 3; i ++){ %>
 		<tr>
 		<% for(int j = 0; j < 3; j++){ %>
