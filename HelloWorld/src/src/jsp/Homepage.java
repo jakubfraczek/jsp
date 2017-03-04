@@ -18,15 +18,12 @@ public class Homepage extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public Homepage() {
-        super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Hello world!").append(request.getRemoteAddr());
 		
 		String param = request.getParameter("action");
@@ -35,7 +32,7 @@ public class Homepage extends HttpServlet {
 			response.sendRedirect("index.jsp");
 			break;
 		case "gallery":
-			response.sendRedirect("gallery.jsp");
+			response.sendRedirect("gallery");
 			break;
 		case "about":
 			response.sendRedirect("about.jsp");
@@ -52,7 +49,6 @@ public class Homepage extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

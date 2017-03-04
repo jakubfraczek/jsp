@@ -1,10 +1,16 @@
-package src.jsp;
+package src.model;
 
 public class Image {
 	private String url = "";
 	private String description = "";
 
-	Image() {}
+	public Image() {}
+
+	public Image(String url, String description) {
+		this.url = url;
+		this.description = description;
+	}
+
 
 	public String getUrl() {
 		return url;
