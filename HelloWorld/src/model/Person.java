@@ -9,11 +9,11 @@ public class Person {
 	
 	public Person(){}
 	
-	public Person(String firstName, String lastName, int BornYear, int phoneNumber, Sex sex) {
+	public Person(String firstName, String lastName, int bornYear, int phoneNumber, Sex sex) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.BornYear = BornYear;
+		this.BornYear = bornYear;
 		this.phoneNumber = phoneNumber;
 		this.sex = sex;
 	}
@@ -33,8 +33,8 @@ public class Person {
 	public int getBornYear() {
 		return BornYear;
 	}
-	public void setBornYear(int birthDate) {
-		this.BornYear = birthDate;
+	public void setBornYear(int bornYear) {
+		this.BornYear = bornYear;
 	}
 	public int getPhoneNumber() {
 		return phoneNumber;

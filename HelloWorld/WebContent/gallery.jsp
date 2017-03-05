@@ -1,11 +1,11 @@
+<%@page import="model.ModelGallery"%>
 <%@page import="java.util.List"%>
-<%@page import="model.Gallery"%>
 <%@page import="java.awt.print.Printable"%>
 <%@ page import="model.Image"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<% Gallery gallery = (Gallery) request.getAttribute("gallery");
+<% ModelGallery gallery = (ModelGallery) request.getAttribute("gallery");
 	List<Image> images = gallery.getImages();
 	int k = 0;%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

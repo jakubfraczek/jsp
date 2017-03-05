@@ -4,13 +4,13 @@ import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Gallery {
+public class ModelGallery {
 	
 	private String name;
 	private List<Image> images;
 	private LocalDate createdDeate;
 	
-	public Gallery(String name){
+	public ModelGallery(String name){
 		this.name = name;
 		this.images = new LinkedList<>();
 		this.createdDeate = LocalDate.now();
