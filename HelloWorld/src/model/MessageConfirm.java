@@ -32,8 +32,7 @@ public class MessageConfirm {
 
 	@Override
 	public String toString() {
-		return "Czeœæ" + name + surname + "!\nDziekujemy za przeslanie wiadomosci.\nTwój email to: " +
-				email + "\nWyslales nastepujaca wiadomosc:\n" + message + "Dziekujemy,\njavalodz2";
+		return "Czeœæ" + name + surname + "!\nDziekujemy za przeslanie wiadomosci.\nWyslales nastepujaca wiadomosc:\n" + message + "Dziekujemy,\njavalodz2";
 		
 	}
 
