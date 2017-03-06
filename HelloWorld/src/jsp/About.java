@@ -41,9 +41,6 @@ public class About extends HttpServlet {
 		request.setAttribute("persons", persons);
 		request.getRequestDispatcher("about.jsp").forward(request, response);
 		
-		if(request.getParameter("action") != null && request.getParameter("action").equals("index")){
-			response.sendRedirect("index.jsp");
-		}
 	}
 
 	/**

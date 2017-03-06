@@ -36,9 +36,6 @@ public class Gallery extends HttpServlet {
 		ModelGallery gallery = createGallery();
 		request.setAttribute("gallery", gallery);
 		request.getRequestDispatcher("gallery.jsp").forward(request, response);
-		if(request.getParameter("action") != null && request.getParameter("action").equals("index")){
-			response.sendRedirect("index.jsp");
-		}
 	}
 
 	private model.ModelGallery createGallery() throws IOException {
