@@ -1,55 +1,52 @@
 package jsp;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Email;
+import model.MessageConfirm;
+
 /**
- * Servlet implementation class FirstServlet
+ * Servlet implementation class Contact
  */
-@WebServlet({"/hello", "/homepage" })
-public class Homepage extends HttpServlet {
+@WebServlet({ "/Contact", "/contact" })
+public class ContactServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Homepage() {
+    public ContactServlet() {
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Hello world!").append(request.getRemoteAddr());
-		
-		String param = request.getParameter("action");
-		switch (param){
-		case "index":
-			response.sendRedirect("index.jsp");
-			break;
-		case "gallery":
-			response.sendRedirect("gallery");
-			break;
-		case "about":
-			response.sendRedirect("about");
-			break;
-		case "contact":
-			response.sendRedirect("contact.jsp");
-			break;
-		default:
-			break;
-		}
-		}
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		
+		
+		String name = request.getParameter("name");
+		String surname = request.getParameter("surname");
+		String email = request.getParameter("email");
+		String message = request.getParameter("message");
+		MessageConfirm mc = new MessageConfirm(name, surname, email, message);
+		Email mail = new Email(mc);
+		
+		mail.send();
+		
+		request.setAttribute("message", mc);
+		request.getRequestDispatcher("sendMessage.jsp").forward(request, response);
 	}
 
 }

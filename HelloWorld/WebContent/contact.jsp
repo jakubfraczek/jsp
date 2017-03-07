@@ -15,7 +15,7 @@
 		Surname:<br> <input type="text" name="surname"> <br>
 		Email:<br> <input type="text" name="email"> <br>
 		Message:<br> <textarea rows="4" cols="50" name="message"></textarea> <br>
-		<input type="submit" name="Send message">
+		<input type="submit" value="submit">
 		<input type="reset"	value="Reset">
 	</form>
 

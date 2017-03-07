@@ -17,13 +17,13 @@ import model.Sex;
  * Servlet implementation class About
  */
 @WebServlet({ "/About", "/about" })
-public class About extends HttpServlet {
+public class AboutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public About() {
+    public AboutServlet() {
     }
 
 	/**

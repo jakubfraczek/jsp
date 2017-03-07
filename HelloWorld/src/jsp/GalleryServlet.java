@@ -17,13 +17,13 @@ import model.ModelGallery;
  * Servlet implementation class Gallery
  */
 @WebServlet({ "/Gallery", "/gallery" })
-public class Gallery extends HttpServlet {
+public class GalleryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Gallery() {
+	public GalleryServlet() {
 	}
 
 	/**

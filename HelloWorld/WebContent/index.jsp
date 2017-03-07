@@ -21,6 +21,7 @@
 		<li><a href="homepage?action=gallery">gallery</a></li>
 		<li><a href="homepage?action=about">about</a></li>
 		<li><a href="homepage?action=contact">contact</a></li>
+		<li><a href="homepage?action=instagram">instagram</a></li>
 	</ul>
 </body>
 </html>
