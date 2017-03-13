@@ -2,8 +2,10 @@ package jsp;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,7 +44,6 @@ public class InstagramImagesServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int i = 0;
 		String user = request.getParameter("user");
 		ModelGallery gallery = new ModelGallery(user);
 
@@ -50,33 +51,71 @@ public class InstagramImagesServlet extends HttpServlet {
 		try {
 			noPhoto = Integer.parseInt(request.getParameter("noPhoto"));
 		} catch (NumberFormatException e) {
-			response.getWriter().append("Wrong number fomat\n" + e);
+			String error = e.toString();
+			request.setAttribute("error", error);
+			request.getRequestDispatcher("error.jsp").forward(request, response);
 			return;
 		}
 
 		URL url = new URL("https://www.instagram.com/" + user + "/");
-		try (Scanner sc = new Scanner(url.openStream())) {
-			String inputLine;
-			String a = "alt=\"";
+		HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+
+		int code;
+		if ((code = connection.getResponseCode()) == 200) {
+
+			try (Scanner sc = new Scanner(url.openStream())) {
+				String inputLine;
+				while (sc.hasNext()) {
+					inputLine = sc.nextLine();
+					gallery = parserHTML(inputLine, gallery, noPhoto);
+
+				}
+
+			} catch (NoSuchElementException e) {
+				response.getWriter().append(e.getMessage());
+			}
+
+		} else {
+			String error = "Server response code: " + code + " " + connection.getResponseMessage();
+			request.setAttribute("error", error);
+			request.getRequestDispatcher("error.jsp").forward(request, response);
+		}
+
+		request.setAttribute("gallery", gallery);
+		request.getRequestDispatcher("gallery.jsp").forward(request, response);
+	}
+
+	private ModelGallery parserHTML(String inputLine, ModelGallery gallery, int noPhoto) {
+		Image image = null;
+		if (inputLine.contains("<img alt")) {
+			String a = " alt=\"";
 			String s = "src=\"";
-			response.getWriter().append("dupa" + ++i);
-			while (gallery.getImages().size() != noPhoto) {
-				inputLine = sc.nextLine();
-				int xa = inputLine.indexOf(a) + a.length();
-				int xs = inputLine.indexOf(s) + s.length();
-				response.getWriter().append("dupa" + ++i);
-				response.getWriter().append(inputLine.substring(xs, inputLine.indexOf("\"")));
-				gallery.addImage(new Image(inputLine.substring(xs, inputLine.indexOf("\"")), inputLine.substring(xa, inputLine.indexOf("\""))));
+			String j = "jpg\"";
+			String[] splitedLine = inputLine.split("img");
+
+			for (int i = 0; i < splitedLine.length; i++) {
+
+				if (splitedLine[i].startsWith(" alt")) {
+					int xa = splitedLine[i].indexOf(a) + a.length();
+					int xs = splitedLine[i].indexOf(s) + s.length();
+					int xj = splitedLine[i].indexOf(j) + j.length() - 1;
+
+					String photoUrl = splitedLine[i].substring(xs, xj);
+
+					String descriptionSubString = splitedLine[i].substring(xa);
+					String description = descriptionSubString.substring(0, descriptionSubString.indexOf("\""));
+					image = new Image(photoUrl, description);
+
+					if (gallery.getImages().size() == 0) {
+						gallery.addImage(image);
+					} else if (!gallery.getImages().get(gallery.getImages().size() - 1).getUrl().equals(photoUrl)
+							&& gallery.getImages().size() < noPhoto) {
+						gallery.addImage(image);
+					}
+				}
 			}
 		}
-		response.getWriter().append("dupa" + ++i);
-		for(Image img : gallery.getImages()){
-			System.out.println(img.getUrl());
-		}
-		
-//		request.setAttribute("gallery", gallery);
-//		request.getRequestDispatcher("gallery.jsp").forward(request, response);
-
+		return gallery;
 	}
 
 }
