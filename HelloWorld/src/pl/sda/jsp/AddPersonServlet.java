@@ -39,6 +39,10 @@ public class AddPersonServlet extends HttpServlet {
 			SQLiteConnectionMenager sqLiteConnectionMenager = new SQLiteConnectionMenager();
 			PersonDAOJdbcSQliteImpl personDAOJdbcSQliteImpl = new PersonDAOJdbcSQliteImpl(sqLiteConnectionMenager);
 			personDAOJdbcSQliteImpl.create(new Person(request.getParameter("name"), request.getParameter("surname"), request.getParameter("bornYear"), request.getParameter("phoneNumber"), request.getParameter("sex")));
+			String msg = "Person added successfully";
+			request.setAttribute("msg", msg);
+			request.getRequestDispatcher("addPerson.jsp").forward(request, response);
+				
 		} catch (Exception e) {
 			String error = e.toString();
 			request.setAttribute("error", error);
