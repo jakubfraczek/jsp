@@ -1,6 +1,6 @@
-<%@page import="model.Sex"%>
+<%@page import="pl.sda.model.Sex"%>
 <%@page import="java.util.LinkedList"%>
-<%@page import="model.Person"%>
+<%@page import="pl.sda.model.Person"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -8,23 +8,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
+<link rel="stylesheet" href="style.css" type="text/css">
 <style>
-table, th, td {
-	border: 1px solid black;
-	border-collapse: collapse;
-}
-table {
-	width: 50%;
-}
-
-th, td {
-	padding: 15px;
-}
-
-th {
-	background-color: #aeaeae;
-}
 
 
 </style>
@@ -50,11 +35,11 @@ th {
 		<c:forEach items="${requestScope.persons}" var="person">
 			<c:if test="${person.sex == 'M'}">
 				<tr>
-					<td style="width:20%">${person.firstName}</td>
-					<td style="width:20%">${person.lastName}</td>
-					<td style="width:20%">${person.bornYear}</td>
-					<td style="width:20%">${person.phoneNumber}</td>
-					<td style="width:20%">${person.sex.sex}</td>
+					<td>${person.firstName}</td>
+					<td>${person.lastName}</td>
+					<td>${person.bornYear}</td>
+					<td>${person.phoneNumber}</td>
+					<td>${person.sex}</td>
 				</tr>
 			</c:if>
 		</c:forEach>

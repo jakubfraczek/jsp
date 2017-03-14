@@ -1,4 +1,4 @@
-package jsp;
+package pl.sda.jsp;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Person;
-import model.Sex;
+import pl.sda.model.Person;
+import pl.sda.model.Sex;
 
 /**
  * Servlet implementation class About

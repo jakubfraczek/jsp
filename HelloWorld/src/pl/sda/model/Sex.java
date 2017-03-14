@@ -1,4 +1,4 @@
-package model;
+package pl.sda.model;
 
 public enum Sex {
 	M("male"), F("female");

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Dzisiaj jest...</title>
+<title>Home</title>
 </head>
 <body>
 	<h2>
@@ -22,6 +22,8 @@
 		<li><a href="homepage?action=about">about</a></li>
 		<li><a href="homepage?action=contact">contact</a></li>
 		<li><a href="homepage?action=instagram">instagram</a></li>
+		<li><a href="homepage?action=addperson">add person to database</a></li>
+		<li><a href="homepage?action=showpersons">show persons from database</a></li>
 	</ul>
 </body>
 </html>

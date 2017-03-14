@@ -1,4 +1,4 @@
-package model;
+package pl.sda.model;
 
 import java.util.Properties;
 

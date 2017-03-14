@@ -1,4 +1,4 @@
-package model;
+package pl.sda.model;
 
 public class Image {
 	private String url = "";

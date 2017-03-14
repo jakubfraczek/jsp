@@ -9,7 +9,6 @@
 </head>
 <body>
 	<a href="homepage?action=index">home</a>
-	<a href="homepage?action=instagram">try again</a>
 	<h2>Oops! Something goes wrong :(</h2>
 
 	<c:out value="${requestScope.error }"></c:out>

@@ -1,4 +1,4 @@
-package model;
+package pl.sda.model;
 
 public class MessageConfirm {
 	private String name;
@@ -32,7 +32,7 @@ public class MessageConfirm {
 
 	@Override
 	public String toString() {
-		return "Czeœæ" + name + surname + "!\nDziekujemy za przeslanie wiadomosci.\nWyslales nastepujaca wiadomosc:\n" + message + "Dziekujemy,\njavalodz2";
+		return "Czeï¿½ï¿½" + name + surname + "!\nDziekujemy za przeslanie wiadomosci.\nWyslales nastepujaca wiadomosc:\n" + message + "Dziekujemy,\njavalodz2";
 		
 	}
 

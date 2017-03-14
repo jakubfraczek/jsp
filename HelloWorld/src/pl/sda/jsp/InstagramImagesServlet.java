@@ -1,4 +1,4 @@
-package jsp;
+package pl.sda.jsp;
 
 import java.io.IOException;
 import java.net.URL;
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Image;
-import model.ModelGallery;
+import pl.sda.model.Image;
+import pl.sda.model.ModelGallery;
 
 /**
  * Servlet implementation class InstagramImagesServlet

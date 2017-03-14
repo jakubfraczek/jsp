@@ -1,7 +1,7 @@
-<%@page import="model.ModelGallery"%>
+<%@page import="pl.sda.model.ModelGallery"%>
 <%@page import="java.util.List"%>
 <%@page import="java.awt.print.Printable"%>
-<%@ page import="model.Image"%>
+<%@ page import="pl.sda.model.Image"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
