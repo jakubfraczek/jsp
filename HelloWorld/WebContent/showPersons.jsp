@@ -11,24 +11,35 @@
 <body>
 	<a href="homepage?action=index">home</a>
 
-	<table>
-		<tr>
-			<th>Firstname</th>
-			<th>Lastname</th>
-			<th>Born Year</th>
-			<th>Phone Number</th>
-			<th>Sex</th>
-		</tr>
-		<c:forEach items="${requestScope.people}" var="person">
+	<form action="/HelloWorld/showpersons" method="post">
+		<table>
 			<tr>
-				<td style="width: 20%">${person.firstName}</td>
-				<td style="width: 20%">${person.lastName}</td>
-				<td style="width: 20%">${person.bornYear}</td>
-				<td style="width: 20%">${person.phoneNumber}</td>
-				<td style="width: 20%">${person.sex}</td>
+				<th>Firstname</th>
+				<th>Lastname</th>
+				<th>Born Year</th>
+				<th>Phone Number</th>
+				<th>Sex</th>
+				<th>Delete</th>
 			</tr>
-		</c:forEach>
-	</table>
+			<c:forEach items="${requestScope.people}" var="person">
+				<tr>
+					<td>${person.firstName}</td>
+					<td>${person.lastName}</td>
+					<td>${person.bornYear}</td>
+					<td>${person.phoneNumber}</td>
+					<td>${person.sex}</td>
+					<td><input type="radio" name="delete"
+						value="${person.phoneNumber}">
+				</tr>
+			</c:forEach>
+		</table>
+		<input type="submit" value="delete">
+	</form>
 
+	<c:if test="${requestScope.msg != null }">
+		<h3 style="color: red">
+			<c:out value="${requestScope.msg }"></c:out>
+		</h3>
+	</c:if>
 </body>
 </html>

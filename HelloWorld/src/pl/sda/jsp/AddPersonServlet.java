@@ -7,8 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pl.sda.DAO.PersonDAO;
 import pl.sda.DAO.PersonDAOJdbcSQliteImpl;
-import pl.sda.DAO.SQLiteConnectionMenager;
+import pl.sda.DAO.PersonSQLiteConnectionMenager;
 import pl.sda.model.Person;
 
 /**
@@ -36,9 +37,9 @@ public class AddPersonServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			SQLiteConnectionMenager sqLiteConnectionMenager = new SQLiteConnectionMenager();
-			PersonDAOJdbcSQliteImpl personDAOJdbcSQliteImpl = new PersonDAOJdbcSQliteImpl(sqLiteConnectionMenager);
-			personDAOJdbcSQliteImpl.create(new Person(request.getParameter("name"), request.getParameter("surname"), request.getParameter("bornYear"), request.getParameter("phoneNumber"), request.getParameter("sex")));
+			PersonSQLiteConnectionMenager sqLiteConnectionMenager = new PersonSQLiteConnectionMenager();
+			PersonDAO personDAO = new PersonDAOJdbcSQliteImpl(sqLiteConnectionMenager);
+			personDAO.create(new Person(request.getParameter("name"), request.getParameter("surname"), request.getParameter("bornYear"), request.getParameter("phoneNumber"), request.getParameter("sex")));
 			String msg = "Person added successfully";
 			request.setAttribute("msg", msg);
 			request.getRequestDispatcher("addPerson.jsp").forward(request, response);

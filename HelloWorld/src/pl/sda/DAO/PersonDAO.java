@@ -8,6 +8,6 @@ public interface PersonDAO {
 	List<Person> getPeople() throws Exception;
 	void create(Person person) throws Exception;
 	void update(Person person) throws Exception;
-	void delete(String name, String surname) throws Exception;
+	void delete(int phoneNumber) throws Exception;
 
 }

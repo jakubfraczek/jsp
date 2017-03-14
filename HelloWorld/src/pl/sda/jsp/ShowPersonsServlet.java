@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pl.sda.DAO.PersonDAO;
 import pl.sda.DAO.PersonDAOJdbcSQliteImpl;
-import pl.sda.DAO.SQLiteConnectionMenager;
+import pl.sda.DAO.PersonSQLiteConnectionMenager;
 import pl.sda.model.Person;
 
 /**
@@ -35,9 +36,9 @@ public class ShowPersonsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			SQLiteConnectionMenager sqLiteConnectionMenager = new SQLiteConnectionMenager();
-			PersonDAOJdbcSQliteImpl personDAOJdbcSQliteImpl = new PersonDAOJdbcSQliteImpl(sqLiteConnectionMenager);
-			List<Person> people = personDAOJdbcSQliteImpl.getPeople();
+			PersonSQLiteConnectionMenager sqLiteConnectionMenager = new PersonSQLiteConnectionMenager();
+			PersonDAO personDAO = new PersonDAOJdbcSQliteImpl(sqLiteConnectionMenager);
+			List<Person> people = personDAO.getPeople();
 			request.setAttribute("people", people);
 			request.getRequestDispatcher("showPersons.jsp").forward(request, response);
 		} catch (Exception e) {
@@ -56,6 +57,22 @@ public class ShowPersonsServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		try{
+			PersonSQLiteConnectionMenager sqLiteConnectionMenager = new PersonSQLiteConnectionMenager();
+			PersonDAO personDAO = new PersonDAOJdbcSQliteImpl(sqLiteConnectionMenager);
+			personDAO.delete(Integer.parseInt(request.getParameter("delete")));
+		} catch (Exception e) {
+			e.printStackTrace();
+			String error = e.toString();
+			request.setAttribute("error", error);
+			request.getRequestDispatcher("error.jsp").forward(request, response);
+			return;
+
+		}
+
+		
+		String msg = "Person deleted successfully";
+		request.setAttribute("msg", msg);
 		doGet(request, response);
 	}
 

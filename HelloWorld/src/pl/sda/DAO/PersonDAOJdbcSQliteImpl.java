@@ -12,10 +12,11 @@ import pl.sda.model.Person;
 public class PersonDAOJdbcSQliteImpl implements PersonDAO {
 	private final String GET_ALL_STM = "SELECT * FROM people";
 	private final String INSERT_STM = "INSERT INTO people(Name, Surname, BornYear, Phone, Sex) values(?,?,?,?,?)";
+	private final String DELETE_STM = "DELETE FROM people WHERE Phone=?";
 
-	private SQLiteConnectionMenager sqliteConnectionMenager;
+	private PersonSQLiteConnectionMenager sqliteConnectionMenager;
 
-	public PersonDAOJdbcSQliteImpl(SQLiteConnectionMenager sqliteConnectionMenager) {
+	public PersonDAOJdbcSQliteImpl(PersonSQLiteConnectionMenager sqliteConnectionMenager) {
 		this.sqliteConnectionMenager = sqliteConnectionMenager;
 	}
 
@@ -45,7 +46,7 @@ public class PersonDAOJdbcSQliteImpl implements PersonDAO {
 
 	@Override
 	public void create(Person person) throws Exception {
-		try(Connection conn = sqliteConnectionMenager.getConnection()){
+		try (Connection conn = sqliteConnectionMenager.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement(INSERT_STM);
 			ps.setString(1, person.getFirstName());
 			ps.setString(2, person.getLastName());
@@ -63,9 +64,12 @@ public class PersonDAOJdbcSQliteImpl implements PersonDAO {
 	}
 
 	@Override
-	public void delete(String name, String surname) throws Exception {
-		// TODO Auto-generated method stub
-
+	public void delete(int phoneNumber) throws Exception {
+		try (Connection conn = sqliteConnectionMenager.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(DELETE_STM);
+			ps.setInt(1, phoneNumber);
+			ps.executeUpdate();
+		}
 	}
 
 }

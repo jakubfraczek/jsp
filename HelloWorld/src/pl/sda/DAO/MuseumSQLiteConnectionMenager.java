@@ -5,14 +5,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class SQLiteConnectionMenager {
+public class MuseumSQLiteConnectionMenager {
 
-	public SQLiteConnectionMenager() throws ClassNotFoundException {
+	public MuseumSQLiteConnectionMenager() throws ClassNotFoundException {
 		Class.forName("org.sqlite.JDBC");
 	}
 
 	public Connection getConnection() throws SQLException {
-		String dbURL = "jdbc:sqlite:" + Paths.get(System.getProperty("user.home"), "Desktop", "peopleDatabase.db");
+		String dbURL = "jdbc:sqlite:" + Paths.get(System.getProperty("user.home"), "Desktop", "museum.db");
 		Connection conn = DriverManager.getConnection(dbURL);
 		return conn;
 	}

@@ -27,15 +27,17 @@
 				name="phoneNumber">
 		</div>
 		<div>
-			<label>Sex</label><br> <input type="radio" name="sex"
-				value="male">Male<br> <input type="radio" name="sex"
-				value="female">Female
+			<label>Sex</label><br> 
+			<input type="radio" name="sex" value="male">Male<br>
+			<input type="radio" name="sex" value="female">Female
 		</div>
 		<input type="submit" value="submit">
 	</form>
 
 	<c:if test="${requestScope.msg != null }">
-		<h3 style="color: red"> <c:out value="${requestScope.msg }"></c:out> </h3>
+		<h3 style="color: red">
+			<c:out value="${requestScope.msg }"></c:out>
+		</h3>
 	</c:if>
 
 </body>
