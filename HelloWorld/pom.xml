@@ -7,6 +7,9 @@
 	<packaging>war</packaging>
 	<name>Jakub Fraczek</name>
 	<description>Learning of JSP</description>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>

@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.Reader;
 import java.nio.file.Paths;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,23 +19,31 @@ public class DBparser {
 
 	public static void main(String[] args) throws Exception {
 
-		
+		System.out.println("-----Program Begin-----");
+
 		File source = Paths.get(System.getProperty("user.home"), "Desktop", "museums.csv").toFile();
 		Reader in = new FileReader(source);
 		Iterable<CSVRecord> records = CSVFormat.RFC4180.withDelimiter(';').withHeader().parse(in);
-		
+
 		MuseumSQLiteConnectionMenager museumSQLiteConnectionMenager = new MuseumSQLiteConnectionMenager();
 		MuseumDAO museumDAO = new MuseumDAOJdbcSQLiteIpml(museumSQLiteConnectionMenager);
+		museumDAO.dropTable();
 		museumDAO.createTable();
-		
+
 		List<Museum> museums = new LinkedList<>();
-		
-		Iterator<CSVRecord> rec = records.iterator();
-		rec.next();
-		while(rec.hasNext()){
-			
+		for (CSVRecord r : records) {
+			String date = null;
+			if (!r.get(9).isEmpty() && r.get(9).length() > 10) {
+				date = r.get(9).substring(0, 10);
+			} else {
+				date = r.get(9);
+			}
+			museums.add(new Museum(r.get(0), r.get(1), r.get(2), r.get(3), r.get(4), r.get(5), r.get(6), r.get(7),
+					r.get(8), date, r.get(10)));
 		}
-		
+		museumDAO.create(museums);
+
+		System.out.println("-----Program End-----");
 
 	}
 

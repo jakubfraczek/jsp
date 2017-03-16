@@ -12,7 +12,7 @@ public class PersonSQLiteConnectionMenager {
 	}
 
 	public Connection getConnection() throws SQLException {
-		String dbURL = "jdbc:sqlite:" + Paths.get(System.getProperty("user.home"), "Desktop", "museum.db");
+		String dbURL = "jdbc:sqlite:" + Paths.get(System.getProperty("user.home"), "Desktop", "people.db");
 		Connection conn = DriverManager.getConnection(dbURL);
 		return conn;
 	}

@@ -24,6 +24,7 @@
 		<li><a href="homepage?action=instagram">instagram</a></li>
 		<li><a href="homepage?action=addperson">add person to database</a></li>
 		<li><a href="homepage?action=showpersons">show persons from database</a></li>
+		<li><a href="homepage?action=museums">show museums</a></li>
 	</ul>
 </body>
 </html>

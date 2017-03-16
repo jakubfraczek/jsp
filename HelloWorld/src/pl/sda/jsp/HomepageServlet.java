@@ -51,6 +51,9 @@ public class HomepageServlet extends HttpServlet {
 		case "showpersons":
 			response.sendRedirect("showpersons");
 			break;
+		case "museums":
+			response.sendRedirect("museum");
+			break;
 		default:
 			break;
 		}

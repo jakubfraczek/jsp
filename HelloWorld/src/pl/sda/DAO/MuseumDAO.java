@@ -1,19 +1,22 @@
 package pl.sda.DAO;
 
-import java.time.LocalDate;
+import java.util.List;
 
 import pl.sda.model.Museum;
-import pl.sda.model.MuseumStatus;
 
 public interface MuseumDAO {
-
-	Museum getById(int id) throws Exception;
-	Museum getByName(String mseumName) throws Exception;
-	Museum getByPostal(String postalCode) throws Exception;
-	Museum getByCity(String city) throws Exception;
-	Museum getByStreet(String street) throws Exception;
-	Museum getByDate(LocalDate addDate) throws Exception;
-	Museum getByStatus(MuseumStatus status) throws Exception;
+	
+	List<Museum> getAll() throws Exception;
+	List<Museum> getById(int id) throws Exception;
+	List<Museum> getByName(String museumName) throws Exception;
+	List<Museum> getByPostal(String postalCode) throws Exception;
+	List<Museum> getByCity(String city) throws Exception;
+	List<Museum> getByStreet(String street) throws Exception;
+	List<Museum> getByOwner(String owner) throws Exception;
+	List<Museum> getByDate(String addDate) throws Exception;
+	List<Museum> getByStatus(String status) throws Exception;
 	void createTable() throws Exception;
-	void create(Museum museum) throws Exception;
+	void dropTable() throws Exception;
+	void add(Museum museum) throws Exception;
+	void create(List<Museum> museums) throws Exception;
 }

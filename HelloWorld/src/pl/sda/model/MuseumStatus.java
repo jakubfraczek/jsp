@@ -2,9 +2,11 @@ package pl.sda.model;
 
 public enum MuseumStatus {
 	PRIVATE("Utworzone przez osoby fizyczne"),
-	AUTONOMY("Samorz¹dowe"),
-	LOCAL("Wspó³prowadzone wpisane do rejestru prowadzonego przez jednostkê samorz¹du terytorialnego"), 
-	NATIONAL("Pañstwowe");
+	LOCAL_GOVERNMENTS("SamorzÄ…dowe"),
+	COLEAD_LOCAL("WspÃ³Å‚prowadzone wpisane do rejestru prowadzonego przez jednostkÄ™ samorzÄ…du terytorialnego"), 
+	COLEAD_NATIONAL("WspÃ³Å‚prowadzone wpisane do rejestru prowadzonego przez Ministra Kultury i Dziedzictwa Narodowego"),
+	CHURCH("KoÅ›cielne"),
+	NATIONAL("PaÅ„stwowe");
 	
 	private String status;
 	
