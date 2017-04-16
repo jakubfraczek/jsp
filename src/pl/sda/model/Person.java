@@ -69,6 +69,9 @@ public class Person {
 	public Sex getSex() {
 		return sex;
 	}
+	public String getSexString() {
+		return sex.getSex();
+	}
 	public void setSex(Sex sex) {
 		this.sex = sex;
 	}

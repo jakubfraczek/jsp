@@ -52,7 +52,7 @@ public class PersonDAOJdbcSQliteImpl implements PersonDAO {
 			ps.setString(2, person.getLastName());
 			ps.setInt(3, person.getBornYear());
 			ps.setInt(4, person.getPhoneNumber());
-			ps.setString(5, person.getSex());
+			ps.setString(5, person.getSexString());
 			ps.execute();
 		}
 	}
