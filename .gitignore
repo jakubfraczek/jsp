@@ -1,0 +1,8 @@
+/HelloWorld/build/
+/HelloWorld/target/
+.classpath
+.settings
+.project
+.DS_Store
+.idea
+.idea/workspace.xml
