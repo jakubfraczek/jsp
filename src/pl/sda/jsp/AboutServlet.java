@@ -13,22 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 import pl.sda.model.Person;
 import pl.sda.model.Sex;
 
-/**
- * Servlet implementation class About
- */
+
 @WebServlet({ "/About", "/about" })
 public class AboutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public AboutServlet() {
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Person> persons = new LinkedList<>();
 		persons.add(new Person("Jan", "Kowalski", 1999, 768938094, Sex.M));
@@ -43,9 +37,7 @@ public class AboutServlet extends HttpServlet {
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

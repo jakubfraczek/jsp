@@ -19,7 +19,7 @@
 	<ul>
 		<li><a href="homepage?action=index">home</a></li>
 		<li><a href="homepage?action=gallery">gallery</a></li>
-		<li><a href="homepage?action=about">about</a></li>
+		<li><a href="homepage?action=about">Hardcoded people</a></li>
 		<li><a href="homepage?action=contact">contact</a></li>
 		<li><a href="homepage?action=instagram">instagram</a></li>
 		<li><a href="homepage?action=addperson">add person to database</a></li>

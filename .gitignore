@@ -1,5 +1,5 @@
-/HelloWorld/build/
-/HelloWorld/target/
+/build/
+/target/
 .classpath
 .settings
 .project

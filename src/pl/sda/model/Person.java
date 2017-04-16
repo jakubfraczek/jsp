@@ -66,8 +66,8 @@ public class Person {
 	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public String getSex() {
-		return sex.getSex();
+	public Sex getSex() {
+		return sex;
 	}
 	public void setSex(Sex sex) {
 		this.sex = sex;

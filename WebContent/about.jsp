@@ -10,8 +10,6 @@
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <style>
-
-
 </style>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -20,7 +18,7 @@
 <body>
 	<a href="homepage?action=index">home</a>
 	<h1>
-		<c:out value="About" />
+		<c:out value="List of hardcoded people" />
 		<br>
 	</h1>
 
@@ -39,7 +37,7 @@
 					<td>${person.lastName}</td>
 					<td>${person.bornYear}</td>
 					<td>${person.phoneNumber}</td>
-					<td>${person.sex}</td>
+					<td>${person.sex.sex}</td>
 				</tr>
 			</c:if>
 		</c:forEach>
@@ -56,11 +54,11 @@
 		<c:forEach items="${requestScope.persons}" var="person">
 			<c:if test="${person.sex == 'F'}">
 				<tr>
-					<td style="width:20%">${person.firstName}</td>
-					<td style="width:20%">${person.lastName}</td>
-					<td style="width:20%">${person.bornYear}</td>
-					<td style="width:20%">${person.phoneNumber}</td>
-					<td style="width:20%">${person.sex.sex}</td>
+					<td style="width: 20%">${person.firstName}</td>
+					<td style="width: 20%">${person.lastName}</td>
+					<td style="width: 20%">${person.bornYear}</td>
+					<td style="width: 20%">${person.phoneNumber}</td>
+					<td style="width: 20%">${person.sex.sex}</td>
 				</tr>
 			</c:if>
 		</c:forEach>
